@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Smart Bookmark App
 
-## Getting Started
+A full-stack real-time bookmark manager built using **Next.js (App Router)** and **Supabase**.
 
-First, run the development server:
+Users can securely log in with Google, add personal bookmarks, and see updates in real-time across multiple tabs.
+
+---
+
+## 🌐 Live Demo
+
+🔗 [https://your-vercel-url.vercel.app  ](https://smart-bookmark-app-ecru-seven.vercel.app/)
+
+---
+## 🖼 Photos
+
+<img width="1906" height="901" alt="Screenshot 2026-02-13 084803" src="https://github.com/user-attachments/assets/75d446de-2d46-4819-950a-25695dbb54c8" />
+
+<img width="1904" height="833" alt="Screenshot 2026-02-13 084823" src="https://github.com/user-attachments/assets/a29b5df0-5e19-4dc3-bd74-0fb08250ffb8" />
+
+
+
+---
+
+## ✨ Features
+
+- 🔐 Google OAuth Authentication (No email/password)
+- ➕ Add bookmarks (Title + URL)
+- 🗑 Delete bookmarks
+- 🔒 Private bookmarks per user (Row Level Security)
+- ⚡ Real-time updates across multiple tabs
+- 🎨 Modern UI with Tailwind CSS
+- 🚀 Deployed on Vercel
+
+---
+
+## 🏗 Tech Stack
+
+### Frontend
+- Next.js (App Router)
+- React
+- Tailwind CSS
+
+### Backend
+- Supabase (PostgreSQL)
+- Supabase Auth (Google OAuth)
+- Supabase Realtime
+- Row Level Security (RLS)
+
+### Deployment
+- Vercel
+
+---
+
+## 🔐 Security
+
+- Row Level Security enabled on bookmarks table
+- Users can only access rows where:
+  ```sql
+  auth.uid() = user_id
+  ```
+- Supabase environment variables securely configured in Vercel
+
+---
+
+## ⚡ Real-Time Functionality
+
+Implemented using Supabase Realtime:
+
+```ts
+supabase
+  .channel("realtime bookmarks")
+  .on("postgres_changes", ...)
+```
+
+This ensures:
+- No page refresh needed
+- Instant sync across multiple tabs
+
+---
+
+## 📂 Project Structure
+
+```
+app/
+ ├── layout.tsx
+ ├── page.tsx
+lib/
+ ├── supabase.ts
+```
+
+---
+
+## 🧪 Local Setup
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+### 3️⃣ Create `.env.local`
+
+```
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+```
+
+### 4️⃣ Run the app
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎯 Key Learnings
 
-## Learn More
+- Implementing secure authentication using OAuth
+- Applying Row Level Security in PostgreSQL
+- Managing real-time data subscriptions
+- Handling production environment configuration
+- Debugging OAuth redirect issues
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👨‍💻 Author
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Built with ❤️ using Next.js & Supabase.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
