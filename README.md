@@ -37,7 +37,6 @@ Users can securely log in with Google, add personal bookmarks, and see updates i
 
 ### Frontend
 - Next.js (App Router)
-- React
 - Tailwind CSS
 
 ### Backend
